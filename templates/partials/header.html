@@ -1,0 +1,51 @@
+<header class="header">
+  {% load static %}
+  <div class="menu_container">
+    <div class="header__con">
+      <div class="header__logo">
+        <img src="{% static 'img/bm.png' %}" class="logo">
+        <h1 class="header__title">BODY MASTER</h1>
+      </div>
+      <label for="check" class="check_menu"> <i class="icon-menu"></i></label>
+      <input type="checkbox" id="check" class="check">
+
+      <nav class="menu">
+        <ul class="menu__ul">
+          <li class="menu__li menu__li--X"><i class="icon-cross"></i></li>
+          <li class="menu__li">
+            <a href="#" class="menu__a">
+              <i class="icon-home menu__icon"></i>
+              <p class="menu__p">INICIO</p>
+            </a>
+          </li>
+
+          <!-- <li class="menu__li">
+              <a href="#" class="menu__a space">
+                <div class="menu__subcon">
+                  <i class="icon-gift menu__icon"></i>
+                  <p class="menu__p">PRODUCTOS</p>
+                </div>
+                <i class="icon-circle-up"></i>
+              </a>
+              <ul class="menu__sub">
+                <li class="menu__subli"><a href="#" class="menu__suba">PROTEINA</a></li>
+                <li class="menu__subli"><a href="#" class="menu__suba">GANADORES</a></li>
+                <li class="menu__subli"><a href="#" class="menu__suba">OXIDOS</a></li>
+              </ul>
+          </li> -->
+
+          <li class="menu__li">
+            <a href="#" class="menu__a">
+              <i class="icon-truck menu__icon"></i>
+              <p class="menu__p">COMPRAS</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <a href="#" class="cart">
+      <i class="icon-cart menu__icon"><sup class="sup">(0)</sup></i>
+      <p class="menu__p"></p>
+    </a>
+  </div>
+</header>

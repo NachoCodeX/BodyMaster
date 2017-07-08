@@ -1,0 +1,73 @@
+$s_color:#FF1D19;
+$m_color:#101010;
+$a_color:#2F2F2F;
+$t_color:#fff;
+// IMPORTS
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+@import url('https://fonts.googleapis.com/css?family=Play');
+@import 'menu';
+@import 'index';
+// VARIABLES
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn{
+  background: transparent;
+  display: block;
+  padding: 0.8rem;
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $s_color;
+  border-radius: 2px;
+  border: 1px solid rgba($m_color,0.1);
+  &:active{
+    transform: scale(0.9);
+  }
+}
+
+.btn--compra{
+  $color:#44c355;
+  background: $color;
+  color: #fff;
+  font-size: 16px;
+  &:hover{
+    background: darken($color,5);
+  }
+
+}
+
+a{text-decoration: none; color: steelblue;}
+button{ border: none; outline: none; background: #eee;}
+sup{font-size: 16px;}
+img{display: block; width: 100%;}
+.menu_container,.container{
+  width: 95%;
+  margin: auto;
+
+}
+.menu_container{display: flex;}
+
+.main{
+  width: 95%;
+  height: calc(100vh - 3.5rem);
+  background:#f7f7f7;
+  margin: auto;
+  height: 100%;
+
+}
+.text{
+  width: 100%;
+}
+.text__noFound{
+  font-weight: lighter;
+  font-size: 36px;
+  text-align: center;
+}

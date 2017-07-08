@@ -1,0 +1,29 @@
+{% extends '../base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+  {% include 'partials/header.html' %}
+  <main class="main">
+  <div class="search_pane">
+      <select class="select" name="">
+        <option value="0">---</option>
+        <option value="1">Proteínas</option>
+        <option value="2">Óxidos</option>
+        <option value="3">Quemadores</option>
+        <option value="4">Ganadores</option>
+        <option value="5">Creatinas</option>
+        <option value="6">Glutaminas</option>
+        <option value="7">Carnitinas</option>
+        <option value="8">CLA</option>
+        <option value="9">Precursores</option>
+        <option value="10">Multivitaminico</option>
+        <option value="11">Shakers</option>
+        <option value="12">BCCA's</option>
+        <option value="13">Aminoácidos</option>
+      </select>
+    </div>
+    <section id="result" class="gallery">
+      {% include 'partials/html_result.html' %}
+    </section>
+  </main>
+
+{% endblock content %}

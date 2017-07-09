@@ -1,0 +1,23 @@
+<form id="formCreate" class="form" action="{% url  'accounts:addProduct' %}" method="POST"  enctype='multipart/form-data'>
+  <div class="modal-dialog animated">
+    <div class="modal-content">
+        <div class="modal-header">
+          <strong class="modal__title">Añadir un articulo</strong>
+        </div>
+        <div class="modal-body">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form__cont">
+             <label class="form__label">{{ field.label }}</label>
+             {{ field }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+          <button id='create' class="btn btn--save" type="submit">GUARDAR</button>
+          <button class="btn close" type="button">Close</button>
+        </div>
+    </div>
+  </div>
+</form>

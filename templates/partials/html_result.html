@@ -1,15 +1,22 @@
 {% for x in object_list  %}
   <div class="item">
-    <img src="media/{{x.img}}" class="img">
+    <div class="item__img">
+        <img src="media/{{x.img}}" class="img">
+    </div>
     <div class="item__info">
-      <h3 class="item__price">{{x.nombre}}</h3>
-      <span class="item__price">Unidades: {{x.cantidad}}</span>
+      <h3 class="item__name">{{x.nombre}}</h3>
+      <span class="item__cant">Unidades: {{x.cantidad}}</span>
       <h4 class="item__price">${{x.precio}}</h4>
-      <p class="item__desc">Proteina iso 100 Dymatize 5lb(73serv)  </p>
+      <!-- {% if x.dec %}
+          <p class="item__desc">{{x.dec}}</p>
+      {% else %}
+        <p class="item__desc">No hay descripcion.</p>
+      {% endif %} -->
+
     </div>
     <div class="item__btns">
-      <button type="button" class="btn btn--compra">Comprar</button>
-      <a href="#" class="btn">Detalles</a>
+      <button type="button" class="btn btn--compra" id="comprar">Añadir</button>
+      {# <a href="#" class="btn">Detalles</a> #}
     </div>
   </div>
   {% empty %}

@@ -13,7 +13,7 @@
         <ul class="menu__ul">
           <li class="menu__li menu__li--X"><i class="icon-cross"></i></li>
           <li class="menu__li">
-            <a href="#" class="menu__a">
+            <a href="/" class="menu__a">
               <i class="icon-home menu__icon"></i>
               <p class="menu__p">INICIO</p>
             </a>
@@ -43,9 +43,10 @@
         </ul>
       </nav>
     </div>
-    <a href="#" class="cart">
-      <i class="icon-cart menu__icon"><sup class="sup">(0)</sup></i>
-      <p class="menu__p"></p>
-    </a>
+    <div id="cart">
+      {% include 'partials/cart_count.html' %}
+    </div>
+
+
   </div>
 </header>

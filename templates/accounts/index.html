@@ -20,10 +20,13 @@
         <option value="12">BCCA's</option>
         <option value="13">Aminoácidos</option>
       </select>
+
+      <button data-url="{% url  'accounts:addProduct' %}" type="button"  class="btn btn--add" id="addProduct"><i class="icon-plus"></i><span class="btn__text">Agregar</span></button>
     </div>
     <section id="result" class="gallery">
       {% include 'partials/html_result.html' %}
     </section>
   </main>
+  <div id="modal" class="modal"></div>
 
 {% endblock content %}

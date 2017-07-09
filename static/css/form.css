@@ -1,21 +1,21 @@
 /*
-Error: Undefined variable: "$m_color".
-        on line 54 of ./menu.scss
+Error: Undefined variable: "$a_color".
+        on line 15 of ./form.scss
 
-49:   height:2rem;
-50: }
-51: 
-52: .header__logo{display: flex; align-items: center;}
-53: .header{
-54:   background: $m_color;
-55:   display: flex;
-56:   justify-content: space-between;
-57:   align-items: center;
-58:   height: 3rem;
-59: 
+10:   margin: auto;
+11:   margin-bottom: 0.5rem;
+12: }
+13: 
+14: .form__label{
+15:   color: $a_color;
+16:   // font-weight: bold;
+17: 
+18: }
+19: 
+20: .form__field{
 
 Backtrace:
-./menu.scss:54
+./form.scss:15
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -65,4 +65,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$m_color\".\A         on line 54 of ./menu.scss\A \A 49:   height:2rem;\A 50: }\A 51: \A 52: .header__logo{display: flex; align-items: center;}\A 53: .header{\A 54:   background: $m_color;\A 55:   display: flex;\A 56:   justify-content: space-between;\A 57:   align-items: center;\A 58:   height: 3rem;\A 59: "; }
+  content: "Error: Undefined variable: \"$a_color\".\A         on line 15 of ./form.scss\A \A 10:   margin: auto;\A 11:   margin-bottom: 0.5rem;\A 12: }\A 13: \A 14: .form__label{\A 15:   color: $a_color;\A 16:   // font-weight: bold;\A 17: \A 18: }\A 19: \A 20: .form__field{"; }

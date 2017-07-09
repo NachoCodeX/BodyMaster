@@ -5,8 +5,12 @@ $t_color:#fff;
 // IMPORTS
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
 @import url('https://fonts.googleapis.com/css?family=Play');
+@import 'btn';
 @import 'menu';
 @import 'index';
+@import 'modal';
+@import 'form';
+
 // VARIABLES
 
 
@@ -17,43 +21,26 @@ $t_color:#fff;
   font-family: 'Roboto', sans-serif;
 }
 
-.btn{
-  background: transparent;
-  display: block;
-  padding: 0.8rem;
-  flex:1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $s_color;
-  border-radius: 2px;
-  border: 1px solid rgba($m_color,0.1);
-  &:active{
-    transform: scale(0.9);
-  }
+
+
+.icon-plus{
+  margin-right: 5px;
 }
 
-.btn--compra{
-  $color:#44c355;
-  background: $color;
-  color: #fff;
-  font-size: 16px;
-  &:hover{
-    background: darken($color,5);
-  }
 
-}
+
+
+
 
 a{text-decoration: none; color: steelblue;}
 button{ border: none; outline: none; background: #eee;}
 sup{font-size: 16px;}
 img{display: block; width: 100%;}
-.menu_container,.container{
+.container{
   width: 95%;
   margin: auto;
 
 }
-.menu_container{display: flex;}
 
 .main{
   width: 95%;

@@ -27,3 +27,53 @@ textarea{
     border: 1px solid rgba(steelblue,1);
   }
 }
+
+.form__cont--img{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.form__field--img{
+  border: none;
+  outline: none;
+  opacity: 0;
+  display: none;
+}
+
+.upload{
+  padding: 10px;
+  color: #fff;
+  background: $a_color;
+  margin-bottom: 0.5rem;
+}
+
+input[type="file"]{
+  border: none;
+  outline: none;
+}
+
+.btn--add-up{
+  width: 100%;
+  background: $s_color;
+  color: #fff;
+}
+
+.form__detail{
+  border: 1px solid rgba(#000,0.2);
+  border-radius: 4px;
+  padding: 10px;
+  width: 350px;
+  min-width: 350px;
+  margin: 0.5rem auto;
+
+}
+
+label[for='img-clear_id']{
+  display: none;
+}
+#img-clear_id{
+  display: none;
+}

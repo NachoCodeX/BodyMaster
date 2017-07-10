@@ -19,7 +19,9 @@
   // flex-direction: column;
 }
 .item__img{
+  // width: 300px;
   border-bottom: 1px solid rgba(#000,0.1);
+  min-height:330px;
 }
 
 .item{
@@ -27,8 +29,6 @@
   min-width:  300px;
   margin-left: auto;
   margin-right: auto;
-  // min-width: 300px;
-  // margin: auto;
   margin-bottom: 1rem;
   border: 1px solid rgba(#000,0.1);
 }

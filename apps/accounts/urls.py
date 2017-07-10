@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^comprar/$',add_purchase, name='comprar'),
     url(r'^compras$',ComprasView.as_view(), name='compras'),
     url(r'^add/product$',add_product, name='addProduct'),
+    url(r'^detail/product/(?P<pk>\d+)$',ProductDetailView.as_view(), name='detail'),
 
 ]

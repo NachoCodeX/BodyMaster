@@ -1,10 +1,14 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render,redirect
+from django.views.generic import TemplateView,DetailView,UpdateView
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from .models import *
-from .forms import ProductForm
+from .forms import *
 from django.views.decorators.csrf import csrf_protect
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.mail import EmailMessage
+
+
 # Create your views here.
 
 class HomeView(TemplateView):
@@ -17,7 +21,6 @@ class HomeView(TemplateView):
 
 class ComprasView(TemplateView):
     template_name='accounts/compras.html'
-
 
 def result(request):
     data=dict()
@@ -43,6 +46,8 @@ def add_purchase(request):
     context={'add':add}
     print(context)
     data['cart']=render_to_string('partials/cart_count.html',context)
+    # email = EmailMessage('COMPRA', 'SE HIZO UNA COMPRA', to=['photoscastillo2017@gmail.com'])
+    # email.send()
     return JsonResponse(data)
 
 # @csrf_protect
@@ -56,7 +61,6 @@ def save_form(request,form,template_name):
             products=Articulo.objects.filter(tipo=request.session['search_product'])
             data['product']=request.session['search_product']
             data['html_list']=render_to_string('partials/html_result.html',{'object_list':products})
-
         else:
             data['form_is_valid']=False
     context={'form':form}
@@ -71,3 +75,14 @@ def add_product(request):
     else:
         form=ProductForm()
     return save_form(request,form,'partials/create_article.html')
+
+
+class ProductDetailView(UpdateView):
+    model = Articulo
+    success_url = reverse_lazy('accounts:home')
+    template_name = 'accounts/detail_product.html'
+    form_class=ProductUpdateForm
+
+    # def get_success_url(self):
+    #     pass
+        # return reverse_lazy('accounts:home')

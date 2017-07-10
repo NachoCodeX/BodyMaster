@@ -30,7 +30,10 @@ $t_color:#fff;
 
 
 
-
+.title{
+  text-align: center;
+  font-weight: lighter;
+}
 
 a{text-decoration: none; color: steelblue;}
 button{ border: none; outline: none; background: #eee;}
@@ -50,9 +53,7 @@ img{display: block; width: 100%;}
   height: 100%;
 
 }
-.text{
-  width: 100%;
-}
+
 .text__noFound{
   font-weight: lighter;
   font-size: 36px;

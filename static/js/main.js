@@ -96,27 +96,30 @@ const saveFormImage=function(e){
     data:form.serialize(),
     type:form.attr('method'),
     dataType:'JSON',
-    cache:false,
-    contentType:false,
-    processData:false,
-    beforeSend:(xhr,settings)=>{
-      let token=$.cookie('csrftoken');
-      console.log(token);
-      xhr.setRequestHeader('X-CSRFToken',token);
-    },
     success:(data)=>{
-      if(data.form_is_valid){
-        console.log(form.find('#id_imagen'));
-        let product=form.find('#id_tipo').val();
-        if(product==data.product){
-          console.log("SEMOS IGUALES");
-          $('#result').html(data.html_list);
-        }else{console.log("NO SEMOS");}
-        $('#modal').hide();
-      }else{
-        alert('NO SAVE');
-      }
+      console.log("SUCCESS!!!!!!!!!");
     }
+    // cache:false,
+    // contentType:false,
+    // processData:false,
+    // beforeSend:(xhr,settings)=>{
+    //   let token=$.cookie('csrftoken');
+    //   console.log(token);
+    //   xhr.setRequestHeader('X-CSRFToken',token);
+    // },
+    // success:(data)=>{
+    //   if(data.form_is_valid){
+    //     let product=form.find('#id_tipo').val();
+    //     if(product==data.product){
+    //       console.log("SEMOS IGUALES");
+    //       location.reload();
+    //       $('#result').html(data.html_list);
+    //     }else{console.log("NO SEMOS");}
+    //     $('#modal').hide();
+    //   }else{
+    //     alert('NO SAVE');
+    //   }
+    // }
   });
 
   return false;
@@ -125,4 +128,4 @@ const saveFormImage=function(e){
 
 
 $('#addProduct').on('click',load);
-$('#modal').on('submit','#formCreate',saveFormImage);
+$('#modal').on('submit','#formCreate',saveForm);

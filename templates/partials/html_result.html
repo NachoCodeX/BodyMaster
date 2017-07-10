@@ -16,9 +16,10 @@
     </div>
     <div class="item__btns">
       <button type="button" class="btn btn--compra" id="comprar">Añadir</button>
-      {# <a href="#" class="btn">Detalles</a> #}
+      <a href="{% url  'accounts:detail' x.pk %}" class="btn">Detalles</a>
     </div>
   </div>
+
   {% empty %}
   <div class="text">
     <h1 class="text__noFound">No hay {{name}}</h1>

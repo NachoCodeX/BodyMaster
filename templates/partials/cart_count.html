@@ -1,4 +1,4 @@
-<a href="#" class="cart">
+<a href="{% url  'accounts:cart' %}" class="cart">
   <i class="icon-cart menu__icon"></i>
   <p class="cart__count">{% if add %}{{add}} {% else %}0{% endif %}</p>
 </a>

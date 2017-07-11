@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 class Articulo(models.Model):
     TYPES=(
@@ -22,3 +22,11 @@ class Articulo(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Compra(models.Model):
+    productos = models.ManyToManyField(Articulo)
+    total = models.PositiveIntegerField(blank=True, null=True)
+    fecha = models.DateField(auto_now_add=True,auto_now=False)
+    def __str__(self):
+        return 'TOTAL: {}'.format(self.total)

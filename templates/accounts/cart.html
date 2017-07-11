@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+  {% include 'partials/header.html' %}
+  <main class="main">
+    <div class="cart__cont">
+      <div class="cart__item">
+        <h4>CART</h4>
+      </div>
+      {% if request.session.product %}
+        {% for x in object_list  %}
+        <div class="cart__item">
+          <p class="cart__p"><span class="cart__span">{{x.cantidad}}x</span>{{x.nombre}}</p>
+          <span class="cart__span">${{x.precio}}</span>
+        </div>
+        {% endfor %}
+        <div class="cart__item cart__item--total">
+          <p class="cart__total">TOTAL:</p>
+          <p class="cart__total--text">${{total}}</p>
+        </div>
+        <div class="cart__btn">
+          <button id="finalizar" data-url="{% url  'accounts:finalizar' %}" type="button" class="btn btn__cart" value="{{product_list_remove}}">FINALIZAR</button>
+          <button class="btn btn__cart btn__cart--del " type="button" id="deleteSession">Eliminar productos</button>
+        </div>
+    </div>
+      {% else %}
+          <div class="cart__item cart__item--no">
+            <p>NO HAY ARTICULOS AÑADIDOS.</p>
+          </div>
+
+      {% endif %}
+
+  </main>
+
+{% endblock content %}

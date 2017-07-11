@@ -1,34 +1,22 @@
 /*
-Error: Undefined variable: "$m_color".
-        on line 11 of ./btn.scss
+Error: Undefined variable: "$s_color".
+        on line 21 of ./cart.scss
 
-6:   display: flex;
-7:   justify-content: center;
-8:   align-items: center;
-9:   color: #000;
-10:   border-radius: 2px;
-11:   border: 1px solid rgba($m_color,0.1);
-12:   // font-weight: lighter;
-13:   font-size: 16px;
-14:   &:hover{
-15:     background: darken(#fff,10);
-16:   }
+16:   display: flex;
+17:   justify-content: space-between;
+18: }
+19: 
+20: .cart__span{
+21:   color: $s_color;
+22:   margin-right: 2px;
+23: }
+24: .cart__p{}
+25: .cart__total,.cart__total--text{
+26:   font-weight: bold;
 
 Backtrace:
-./btn.scss:11
+./cart.scss:21
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:173:in `perform_arg'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `block in _perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each_with_index'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `each'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/funcall.rb:124:in `_perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/list_literal.rb:63:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/list_literal.rb:63:in `_perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
@@ -77,4 +65,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$m_color\".\A         on line 11 of ./btn.scss\A \A 6:   display: flex;\A 7:   justify-content: center;\A 8:   align-items: center;\A 9:   color: #000;\A 10:   border-radius: 2px;\A 11:   border: 1px solid rgba($m_color,0.1);\A 12:   // font-weight: lighter;\A 13:   font-size: 16px;\A 14:   &:hover{\A 15:     background: darken(#fff,10);\A 16:   }"; }
+  content: "Error: Undefined variable: \"$s_color\".\A         on line 21 of ./cart.scss\A \A 16:   display: flex;\A 17:   justify-content: space-between;\A 18: }\A 19: \A 20: .cart__span{\A 21:   color: $s_color;\A 22:   margin-right: 2px;\A 23: }\A 24: .cart__p{}\A 25: .cart__total,.cart__total--text{\A 26:   font-weight: bold;"; }

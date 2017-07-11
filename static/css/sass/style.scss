@@ -10,6 +10,7 @@ $t_color:#fff;
 @import 'index';
 @import 'modal';
 @import 'form';
+@import 'cart';
 
 // VARIABLES
 
@@ -48,10 +49,15 @@ img{display: block; width: 100%;}
 .main{
   width: 95%;
   height: calc(100vh - 3.5rem);
-  background:#f7f7f7;
+  // background:#f7f7f7;
+  background: lighten(#F9F9F9,2);
   margin: auto;
   height: 100%;
 
+}
+
+.text{
+  width: 100%;
 }
 
 .text__noFound{

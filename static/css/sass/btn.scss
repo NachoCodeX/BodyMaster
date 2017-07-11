@@ -9,6 +9,7 @@
   color: #000;
   border-radius: 2px;
   border: 1px solid rgba($m_color,0.1);
+  // font-weight: lighter;
   font-size: 16px;
   &:hover{
     background: darken(#fff,10);
@@ -51,5 +52,23 @@
   font-size: 16px;
   &:hover{
     background: darken($a_color,10);
+  }
+}
+
+.btn__cart{
+  width: 100%;
+  color: #fff;
+  font-weight: lighter;
+  background: $a_color;
+  margin-bottom: 0.2rem;
+  &:hover{
+    background: darken($a_color,5);
+  }
+}
+
+.btn__cart--del{
+  background: $s_color;
+  &:hover{
+    background: darken($s_color,10);
   }
 }

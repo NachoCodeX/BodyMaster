@@ -48,11 +48,9 @@ class HomeView(TemplateView):
             for i in all_ob:
                 tempDict=dict([(str(i.pk),i.cantidad)])
                 if tempDict not in temp:
-                    print("ADDDDDDDDDDDDDDDDD NEEEEE!!!")
                     temp.append(tempDict)
             self.request.session['count']=temp
 
-        print("HOME COUNT: "+str(self.request.session['count']))
         self.request.session.modified = True
         self.request.session['search_product']=0
         return context
@@ -198,15 +196,14 @@ def finalizar(request):
     compra.save()
     print(first_name,last_name)
     del request.session['product']
-    subject,from_email,to='BodyMaster {}'.format(compra.fecha),'teambodymaster@gmail.com','photoscastillo2017@gmail.com'
+    subject,from_email,to='BodyMaster {}'.format(compra.fecha),'teambodymaster@gmail.com','armando_bonilla4@hotmail.com'
     print('COMPRA REALIZADA POR: '+fullname)
     html_content=render_to_string('accounts/email_cart.html',{'object_list':email_context,'total':total,'nombre':fullname})
     text_content=strip_tags(html_content)
-    msg=EmailMultiAlternatives(subject,text_content,from_email,[to,'nacho9707@hotmail.com'])
+    msg=EmailMultiAlternatives(subject,text_content,from_email,[to,'photoscastillo2017@gmail.com'])
     msg.attach_alternative(html_content,'text/html')
     msg.send()
-    # email = EmailMessage('BodyMaster {}'.format(compra.fecha), 'Se ha relizado una compra de {1} con un total de ${0} \n '.format(total,"/".join(names)), to=['photoscastillo2017@gmail.com'])
-    # email.send()
+
     return JsonResponse(data)
 
 def product_delete(request,pk):

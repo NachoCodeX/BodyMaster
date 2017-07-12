@@ -4,7 +4,30 @@
   {% include 'partials/header.html' %}
 
   <div class="container">
-    <h1 class="title">Información de {{object}}</h1>
+
+    <form  class="form margin-top" method="post">{% csrf_token %}
+      <div class="modal-dialog animated">
+        <div class="modal-content">
+            <div class="modal-header">
+              <strong class="modal__title">Detalle {{object}}</strong>
+            </div>
+            <div class="modal-body">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form__cont">
+                 <label class="form__label">{{ field.label }}</label>
+                 {{ field }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn--save" type="submit">GUARDAR</button>
+            </div>
+        </div>
+      </div>
+    </form>
+    <!-- {# <h1 class="title">Información de {{object}}</h1>
     <form class="form__detail" method="post" enctype='multipart/form-data'>{% csrf_token %}
       {% for field in form %}
         {% if field.label != 'Imagen' %}
@@ -21,6 +44,6 @@
 
       {% endfor %}
       <button type="submit" name="button" class="btn btn--add-up">Guardar</button>
-    </form>
+    </form> #} -->
   </div>
 {% endblock content %}

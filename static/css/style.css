@@ -489,6 +489,10 @@ textarea {
   .form__field:focus {
     border: 1px solid steelblue; }
 
+.margin-top {
+  margin: 1rem auto;
+  max-width: 400px; }
+
 .form__cont--img {
   display: flex;
   flex-direction: column;

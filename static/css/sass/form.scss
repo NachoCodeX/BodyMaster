@@ -30,10 +30,6 @@
   margin:auto;
 }
 
-.form__cont{
-  // background: #000
-
-}
 
 textarea{
   height: 100px;
@@ -63,6 +59,11 @@ textarea{
   &:focus{
     border: 1px solid rgba(steelblue,1);
   }
+}
+
+.margin-top{
+  margin: 1rem auto;
+  max-width: 400px;
 }
 
 .form__cont--img{

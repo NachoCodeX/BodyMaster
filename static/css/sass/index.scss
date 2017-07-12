@@ -1,6 +1,10 @@
 .select{
   font-size: 16px;
-  padding: 5px; width: calc(90%);border: none; outline: none; margin-right: 0.5rem;
+  padding: 5px;
+  width: calc(90%);
+  border: 1px solid rgba(#000,0.1);
+  outline: none;
+  margin-right: 0.5rem;
 }
 
 .search_pane{
@@ -11,15 +15,12 @@
 
 .gallery{
   margin-top: 1rem;
-  // max-width: 300px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
-  // flex-direction: column;
 }
 .item__img{
-  // width: 300px;
   border-bottom: 1px solid rgba(#000,0.1);
   min-height:330px;
 }
@@ -32,6 +33,22 @@
   margin-bottom: 1rem;
   border: 1px solid rgba(#000,0.1);
 }
+
+.item__delete{
+  display: flex;
+  justify-content: flex-end;
+  background: #f2f2f2;
+  padding: 2px;
+
+  .del{
+    border-radius: 50%;
+  }
+  .icon-cancel-circle{
+    font-size: 16px;
+    &:hover{color: red;}
+  }
+}
+
 .item__price,.item__cant,.item__desc,.item__name{
   font-weight: lighter;
 }

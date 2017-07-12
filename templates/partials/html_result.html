@@ -3,6 +3,11 @@
      <!-- <div class="item__img">
         <img src="media/{{x.img}}" class="img">
     </div> -->
+    <div class="item__delete">
+        <button data-url={% url 'accounts:product_delete' x.pk %} type="submit" class="del" id="product_delete">
+          <i class="icon-cancel-circle"></i>
+        </button>
+    </div>
     <div class="item__info">
       <h3 class="item__name">{{x.nombre}}</h3>
       <span class="item__cant">Unidades: {{x.cantidad}}</span>
@@ -10,13 +15,13 @@
     </div>
     <div class="item__btns">
       {#{{request.session.count|get_cart:x.pk}}  #}
-      <button value="{{request.session.count|get_cart:x.pk}} /{{x.cantidad}}" data-url="{{x.id}}" type="button" class="btn btn--compra" id="comprar">Añadir</button>
+      <button value="{{request.session.count|get_cart:x.pk}}/{{x.cantidad}}" data-url="{{x.id}}" type="button" class="btn btn--compra" id="comprar">Añadir</button>
       <a href="{% url  'accounts:detail' x.pk %}" class="btn">Detalles</a>
     </div>
   </div>
 
   {% empty %}
   <div class="text">
-    <h1 class="text__noFound">No hay {{name}}</h1>
+      <h1 class="text__noFound">No hay {{name}}</h1>
   </div>
 {% endfor %}

@@ -10,6 +10,19 @@
   animation: modalAnimation 1.5s;
 }
 
+.modal__text{
+  font-size: 16px;
+}
+
+.modal-body--delete{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+
+
 body.modal-open {
     overflow-x: hidden;
     overflow-y: auto;
@@ -55,6 +68,12 @@ body.modal-open {
   padding: 0.3rem;
   margin-bottom: 1rem;
   background: $s_color;
+}
+.modal-header--delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0rem;
 }
 .modal__title{
   color: #fff;

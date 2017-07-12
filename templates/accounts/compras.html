@@ -4,15 +4,43 @@
 {% block content %}
   {% include 'partials/header.html' %}
   <main class="main">
-    <h1>COMPRAS</h1>
-    {% for x in object_list  %}
-        <p>{{x}}-{{x.fecha}}</p>
-    {% endfor %}
-    <button id="test" type="button" name="button" class="btn">OPEN</button>
+    <div class="table_con">
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <th>REALIZADA POR</th>
+            <th>FECHA</th>
+            <th>TOTAL</th>
+            <th>--</th>
+          </tr>
+        </thead>
+        <tbody class="table__body">
+          {% for x in object_list  %}
+                <tr>
+                  <td>{{x.usuario.first_name}}</td>
+                  <td>{{x.fecha}}</td>
+                  <td>${{x.total}}</td>
+                  <td>
+                    <form  action="{% url  'accounts:compra_delete' x.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" id="delete_compra">
+                            <i class="icon-cross"></i>
+                        </button>
+                    </form>
+                  </td>
+                </tr>
+          {% empty %}
+            <tr>
+              <th colspan="4">NO HAY COMPRAS</th>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
   </main>
 
   <div id="loading">
-    <h1>HOLA</h1>
   </div>
 
 {% endblock content %}

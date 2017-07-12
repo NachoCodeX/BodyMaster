@@ -1,0 +1,17 @@
+<form id="formDelete" class="form" action="{% url  'accounts:product_delete' object.id %}" method="POST">{% csrf_token %}
+  <div class="modal-dialog animated">
+    <div class="modal-content">
+        <div class="modal-header modal-header--delete">
+          <strong class="modal__title">Eliminar un articulo</strong>
+        </div>
+        <div class="modal-body--delete">
+          <p class="modal__text">¿Seguro que desa eliminar {{object.nombre}}?</p>
+        </div>
+
+        <div class="modal-footer">
+          <button  class="btn btn--save" type="submit">ELIMINAR</button>
+          <button class="btn close" type="button">Close</button>
+        </div>
+    </div>
+  </div>
+</form>

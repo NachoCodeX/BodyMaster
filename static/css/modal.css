@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$s_color".
-        on line 57 of ./modal.scss
+        on line 70 of ./modal.scss
 
-52:   display: flex;
-53:   justify-content: center;
-54:   align-items: center;
-55:   padding: 0.3rem;
-56:   margin-bottom: 1rem;
-57:   background: $s_color;
-58: }
-59: .modal__title{
-60:   color: #fff;
-61:   font-weight: lighter;
-62:   font-size: 24px;
+65:   display: flex;
+66:   justify-content: center;
+67:   align-items: center;
+68:   padding: 0.3rem;
+69:   margin-bottom: 1rem;
+70:   background: $s_color;
+71: }
+72: .modal-header--delete{
+73:   display: flex;
+74:   justify-content: center;
+75:   align-items: center;
 
 Backtrace:
-./modal.scss:57
+./modal.scss:70
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -65,4 +65,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$s_color\".\A         on line 57 of ./modal.scss\A \A 52:   display: flex;\A 53:   justify-content: center;\A 54:   align-items: center;\A 55:   padding: 0.3rem;\A 56:   margin-bottom: 1rem;\A 57:   background: $s_color;\A 58: }\A 59: .modal__title{\A 60:   color: #fff;\A 61:   font-weight: lighter;\A 62:   font-size: 24px;"; }
+  content: "Error: Undefined variable: \"$s_color\".\A         on line 70 of ./modal.scss\A \A 65:   display: flex;\A 66:   justify-content: center;\A 67:   align-items: center;\A 68:   padding: 0.3rem;\A 69:   margin-bottom: 1rem;\A 70:   background: $s_color;\A 71: }\A 72: .modal-header--delete{\A 73:   display: flex;\A 74:   justify-content: center;\A 75:   align-items: center;"; }

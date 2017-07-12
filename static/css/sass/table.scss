@@ -1,0 +1,35 @@
+.table_con{
+  width: 100%;
+}
+.table{
+  margin: auto;
+  width: 100%;
+  margin-top: 1rem;
+  max-width: 1000px;  border-collapse: collapse;
+
+}
+#delete_compra{
+  background: transparent;
+  border-radius: 50%;
+}
+
+th,td{
+  padding: 10px;
+}
+.table__head{
+  background: $s_color;
+  text-align: center;
+  color: #fff;
+
+  height: 1rem;
+}
+.table__body{
+  text-align: center;
+
+  tr:nth-child(even){
+    background: #eee;
+  }
+  tr:hover{
+    background: #ddd;
+  }
+}

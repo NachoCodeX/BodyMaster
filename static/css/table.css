@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$s_color".
-        on line 22 of ./form.scss
+        on line 20 of ./table.scss
 
-17: 
-18: .btn-login{
-19:   margin: 1rem auto;
-20:   width: 100%;
-21:   padding: 8px;
-22:   background: $s_color;
-23:   color: #fff;
-24: }
-25: .login_form{
-26:   border: 1px solid rgba(#000,0.1);
-27:   width: 95%;
+15: 
+16: th,td{
+17:   padding: 10px;
+18: }
+19: .table__head{
+20:   background: $s_color;
+21:   text-align: center;
+22:   color: #fff;
+23: 
+24:   height: 1rem;
+25: }
 
 Backtrace:
-./form.scss:22
+./table.scss:20
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -65,4 +65,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$s_color\".\A         on line 22 of ./form.scss\A \A 17: \A 18: .btn-login{\A 19:   margin: 1rem auto;\A 20:   width: 100%;\A 21:   padding: 8px;\A 22:   background: $s_color;\A 23:   color: #fff;\A 24: }\A 25: .login_form{\A 26:   border: 1px solid rgba(#000,0.1);\A 27:   width: 95%;"; }
+  content: "Error: Undefined variable: \"$s_color\".\A         on line 20 of ./table.scss\A \A 15: \A 16: th,td{\A 17:   padding: 10px;\A 18: }\A 19: .table__head{\A 20:   background: $s_color;\A 21:   text-align: center;\A 22:   color: #fff;\A 23: \A 24:   height: 1rem;\A 25: }"; }

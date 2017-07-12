@@ -16,9 +16,10 @@
         <option value="8">CLA</option>
         <option value="9">Precursores</option>
         <option value="10">Multivitaminico</option>
-        <option value="11">Shakers</option>
+        <option value="11">Accesorios</option>
         <option value="12">BCCA's</option>
         <option value="13">Aminoácidos</option>
+
       </select>
 
       <button data-url="{% url  'accounts:addProduct' %}" type="button"  class="btn btn--add" id="addProduct"><i class="icon-plus"></i><span class="btn__text">Agregar</span></button>
@@ -29,4 +30,6 @@
   </main>
   <div id="modal" class="modal"></div>
   <div id="loading"></div>
+  <div id="Addloading">
+  </div>
 {% endblock content %}

@@ -1,28 +1,34 @@
-from django.shortcuts import render,redirect
-from django.views.generic import TemplateView,DetailView,UpdateView,ListView
+from django.shortcuts import render,redirect,get_object_or_404
+from django.views.generic import TemplateView,DetailView,UpdateView,ListView,DeleteView
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from .models import *
 from .forms import *
 from django.views.decorators.csrf import csrf_protect
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,EmailMultiAlternatives
 from django.template.defaulttags import register
 from collections import defaultdict
 from django.http import HttpResponseRedirect
+from django.utils.html import strip_tags
+
 @register.filter
 def get_cart(dic,key,*args,**kwargs):
     print("DICT: "+str(dic))
-    print(key)
-    # print(request.session['count'])
     for i in dic:
         if str(key) in i:
             return i.get(str(key))
-
+@register.filter
+def getItemsCount(i):
+    return len(i)
 
 
 
 # Create your views here.
+
+class compra_delete(DeleteView):
+    success_url=reverse_lazy('accounts:compras')
+    model=Compra
 
 class HomeView(TemplateView):
     template_name='accounts/index.html'
@@ -30,13 +36,22 @@ class HomeView(TemplateView):
         context=super(HomeView,self).get_context_data(*args,**kwargs)
         context['object_list']=Articulo.objects.all()
         if "count" not in self.request.session:
-            print("ENTRE")
             self.request.session['count']=[]
             for i in context['object_list']:
                 aux=self.request.session['count']
                 a=dict([(str(i.pk),i.cantidad)])
                 aux.append(a)
                 self.request.session['count']=aux
+        else:
+            temp=self.request.session['count']
+            all_ob=context['object_list']
+            for i in all_ob:
+                tempDict=dict([(str(i.pk),i.cantidad)])
+                if tempDict not in temp:
+                    print("ADDDDDDDDDDDDDDDDD NEEEEE!!!")
+                    temp.append(tempDict)
+            self.request.session['count']=temp
+
         print("HOME COUNT: "+str(self.request.session['count']))
         self.request.session.modified = True
         self.request.session['search_product']=0
@@ -46,7 +61,7 @@ class ComprasView(ListView):
     template_name='accounts/compras.html'
 
     def get_queryset(self):
-        return Compra.objects.all()
+        return Compra.objects.all().order_by('-fecha')
 
 class CartView(TemplateView):
     template_name='accounts/cart.html'
@@ -115,11 +130,10 @@ def save_form(request,form,template_name):
     if request.method =='POST':
         if form.is_valid():
             form.save()
-            # print(form)
             data['form_is_valid']=True
             products=Articulo.objects.filter(tipo=request.session['search_product'])
             data['product']=request.session['search_product']
-            data['html_list']=render_to_string('partials/html_result.html',{'object_list':products})
+            data['html_list']=render_to_string('partials/html_result.html',{'object_list':products},request=request)
         else:
             data['form_is_valid']=False
     context={'form':form}
@@ -129,8 +143,7 @@ def save_form(request,form,template_name):
 @csrf_protect
 def add_product(request):
     if request.method=='POST':
-        form=ProductForm(data=request.POST,files=request.FILES)
-        print(request.FILES)
+        form=ProductForm(request.POST)
     else:
         form=ProductForm()
     return save_form(request,form,'partials/create_article.html')
@@ -169,17 +182,46 @@ def finalizar(request):
         p=Articulo.objects.get(pk=i)
         total=total+(p.precio)
         compra.productos.add(p)
+
     names=[]
+    email_context=[]
     for pk,cant in repeat.items():
         p=Articulo.objects.get(pk=pk)
+        email_context.append({'nombre':p.nombre,'precio':p.precio,'cantidad':cant})
         names.append(str(cant)+"x"+str(p.nombre))
         p.cantidad=p.cantidad-cant
         p.save()
-    # print(request.session['items'])
     compra.total=total
+    compra.usuario=request.user
+    first_name,last_name=request.user.first_name,request.user.last_name
+    fullname='{0} {1}'.format(first_name,last_name).upper()
     compra.save()
-    print(names)
+    print(first_name,last_name)
     del request.session['product']
-    email = EmailMessage('BodyMaster {}'.format(compra.fecha), 'Se ha relizado una compra de {1} con un total de ${0} \n '.format(total,"/".join(names)), to=['photoscastillo2017@gmail.com'])
-    email.send()
+    subject,from_email,to='BodyMaster {}'.format(compra.fecha),'teambodymaster@gmail.com','photoscastillo2017@gmail.com'
+    print('COMPRA REALIZADA POR: '+fullname)
+    html_content=render_to_string('accounts/email_cart.html',{'object_list':email_context,'total':total,'nombre':fullname})
+    text_content=strip_tags(html_content)
+    msg=EmailMultiAlternatives(subject,text_content,from_email,[to,'nacho9707@hotmail.com'])
+    msg.attach_alternative(html_content,'text/html')
+    msg.send()
+    # email = EmailMessage('BodyMaster {}'.format(compra.fecha), 'Se ha relizado una compra de {1} con un total de ${0} \n '.format(total,"/".join(names)), to=['photoscastillo2017@gmail.com'])
+    # email.send()
+    return JsonResponse(data)
+
+def product_delete(request,pk):
+    product=get_object_or_404(Articulo,pk=pk)
+    data=dict()
+    if request.method=='POST':
+        product.delete()
+        data['form_is_valid']=True
+        products=Articulo.objects.filter(tipo=request.session['search_product'])
+        context={'object_list':Articulo.objects.all()}
+        data['html_list']=render_to_string('partials/html_result.html',context,request=request)
+        if 'product' in request.session:
+            del request.session['product']
+        del request.session['count']
+    else:
+        context={'object':product}
+        data['html']=render_to_string('partials/delete_form.html',context,request=request)
     return JsonResponse(data)

@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% block title %}Body Master{% endblock title %}
+{% block content %}
+  {% include 'partials/header.html' %}
+  <div class="login_con">
+
+    <form class="login_form" method="post">
+      <div class="login-text_cont">
+        <h1>Login</h1>
+      </div>
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form__cont">
+       {# <label class="form__label">{{ field.label }}</label> #}
+       {{ field }}
+      </div>
+      {% endfor %}
+      <div class="form__cont">
+       <button class="btn-login" type="submit" name="button">Ingresar</button>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

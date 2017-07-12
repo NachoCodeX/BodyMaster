@@ -2,7 +2,7 @@
   font-size: 16px;
   padding: 5px;
   width: calc(90%);
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   outline: none;
   margin-right: 0.5rem; }
 
@@ -28,6 +28,18 @@
   margin-right: auto;
   margin-bottom: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.1); }
+
+.item__delete {
+  display: flex;
+  justify-content: flex-end;
+  background: #f2f2f2;
+  padding: 2px; }
+  .item__delete .del {
+    border-radius: 50%; }
+  .item__delete .icon-cancel-circle {
+    font-size: 16px; }
+    .item__delete .icon-cancel-circle:hover {
+      color: red; }
 
 .item__price, .item__cant, .item__desc, .item__name {
   font-weight: lighter; }

@@ -21,7 +21,7 @@
         </div>
         <div class="cart__btn">
           <button id="finalizar" data-url="{% url  'accounts:finalizar' %}" type="button" class="btn btn__cart" value="{{product_list_remove}}">FINALIZAR</button>
-          <button class="btn btn__cart btn__cart--del " type="button" id="deleteSession">Eliminar productos</button>
+          <button class="btn btn__cart btn__cart--del " type="button" id="deleteSession">Reiniciar compra</button>
         </div>
     </div>
       {% else %}
@@ -32,5 +32,8 @@
       {% endif %}
 
   </main>
+  <div id="loading">
+
+  </div>
 
 {% endblock content %}

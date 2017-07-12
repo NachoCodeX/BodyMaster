@@ -4,7 +4,7 @@
   {% include 'partials/header.html' %}
 
   <div class="container">
-    <h1 class="title">Detall de {{object}}</h1>
+    <h1 class="title">Información de {{object}}</h1>
     <form class="form__detail" method="post" enctype='multipart/form-data'>{% csrf_token %}
       {% for field in form %}
         {% if field.label != 'Imagen' %}

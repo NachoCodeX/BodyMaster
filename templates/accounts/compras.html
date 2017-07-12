@@ -5,7 +5,14 @@
   {% include 'partials/header.html' %}
   <main class="main">
     <h1>COMPRAS</h1>
-
+    {% for x in object_list  %}
+        <p>{{x}}-{{x.fecha}}</p>
+    {% endfor %}
+    <button id="test" type="button" name="button" class="btn">OPEN</button>
   </main>
+
+  <div id="loading">
+    <h1>HOLA</h1>
+  </div>
 
 {% endblock content %}

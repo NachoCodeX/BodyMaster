@@ -7,15 +7,10 @@
       <h3 class="item__name">{{x.nombre}}</h3>
       <span class="item__cant">Unidades: {{x.cantidad}}</span>
       <h4 class="item__price">${{x.precio}}</h4>
-      <!-- {% if x.dec %}
-          <p class="item__desc">{{x.dec}}</p>
-      {% else %}
-        <p class="item__desc">No hay descripcion.</p>
-      {% endif %} -->
-
     </div>
     <div class="item__btns">
-      <button value="{{x.cantidad}}/{{x.cantidad}}" data-url="{{x.id}}" type="button" class="btn btn--compra" id="comprar">Añadir</button>
+      {#{{request.session.count|get_cart:x.pk}}  #}
+      <button value="{{request.session.count|get_cart:x.pk}} /{{x.cantidad}}" data-url="{{x.id}}" type="button" class="btn btn--compra" id="comprar">Añadir</button>
       <a href="{% url  'accounts:detail' x.pk %}" class="btn">Detalles</a>
     </div>
   </div>

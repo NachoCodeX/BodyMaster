@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views.generic import TemplateView,DetailView,UpdateView
+from django.views.generic import TemplateView,DetailView,UpdateView,ListView
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from .models import *
@@ -7,6 +7,19 @@ from .forms import *
 from django.views.decorators.csrf import csrf_protect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.core.mail import EmailMessage
+from django.template.defaulttags import register
+from collections import defaultdict
+from django.http import HttpResponseRedirect
+@register.filter
+def get_cart(dic,key,*args,**kwargs):
+    print("DICT: "+str(dic))
+    print(key)
+    # print(request.session['count'])
+    for i in dic:
+        if str(key) in i:
+            return i.get(str(key))
+
+
 
 
 # Create your views here.
@@ -16,13 +29,24 @@ class HomeView(TemplateView):
     def get_context_data(self,*args,**kwargs):
         context=super(HomeView,self).get_context_data(*args,**kwargs)
         context['object_list']=Articulo.objects.all()
+        if "count" not in self.request.session:
+            print("ENTRE")
+            self.request.session['count']=[]
+            for i in context['object_list']:
+                aux=self.request.session['count']
+                a=dict([(str(i.pk),i.cantidad)])
+                aux.append(a)
+                self.request.session['count']=aux
+        print("HOME COUNT: "+str(self.request.session['count']))
         self.request.session.modified = True
-        # if('product' in self.request.session): del self.request.session['product']
         self.request.session['search_product']=0
         return context
 
-class ComprasView(TemplateView):
+class ComprasView(ListView):
     template_name='accounts/compras.html'
+
+    def get_queryset(self):
+        return Compra.objects.all()
 
 class CartView(TemplateView):
     template_name='accounts/cart.html'
@@ -35,19 +59,7 @@ class CartView(TemplateView):
             repeat=Counter(products)
             list_pk= [i for i in repeat if repeat[i]>1]
             list_pk= list_pk+[i for i in repeat if repeat[i]==1]
-            # print(list(repeat))
-            # print(list_pk)
-            # print(products)
             context['object_list']=[]
-            # self.request.session['items']=dict(repeat)
-            # li=list()
-            # for key,value in l.items():
-            #     a='{}/{}'.format(key,value)
-            #     li.append(a)
-            # # context['product_list_remove']
-            # print(l)
-            #
-            # context['product_list_remove']="-".join(li)
             total=0
             for pk in list_pk:
                 product=Articulo.objects.get(pk=pk)
@@ -61,7 +73,6 @@ def result(request):
     typeProduct=request.GET['type']
     request.session['search_product']=typeProduct
     nameProduct=request.GET['name']
-    # print(request.session['search_product'])
     if int(typeProduct) > 0:
         articles=Articulo.objects.filter(tipo=typeProduct)
     else:
@@ -70,29 +81,32 @@ def result(request):
         'object_list':articles,
         'name':nameProduct,
     }
-    data['html_result']=render_to_string('partials/html_result.html',context)
+    data['html_result']=render_to_string('partials/html_result.html',context,request=request)
     return JsonResponse(data)
 
-def sessionValues(request,add,idCompra):
+def sessionValues(request,idCompra):
     if 'product' in request.session:
         s=request.session['product']
         s.append(idCompra)
         request.session['product']=s
-        print("PRODUCTOS: "+str(request.session['product']))
     else:
         request.session['product']=[idCompra]
-        print(request.session['product'])
 
 def add_purchase(request):
     data=dict()
-    add=int(request.GET['add'])
     idCompra=int(request.GET['idCompra'])
-    sessionValues(request,add,idCompra)
+    temp=request.session['count']
+    for i in temp:
+        newId=str(idCompra)
+        if newId in i:
+            i[newId]=i.get(newId)-1
+    print("REDUCE: "+str(temp))
+    add=int(request.GET['add'])
+    sessionValues(request,idCompra)
     context={'add':add}
-    print(context)
+    # print(context)
     data['cart']=render_to_string('partials/cart_count.html',context)
-    # email = EmailMessage('COMPRA', 'SE HIZO UNA COMPRA', to=['photoscastillo2017@gmail.com'])
-    # email.send()
+
     return JsonResponse(data)
 
 # @csrf_protect
@@ -127,10 +141,21 @@ class ProductDetailView(UpdateView):
     success_url = reverse_lazy('accounts:home')
     template_name = 'accounts/detail_product.html'
     form_class=ProductUpdateForm
+    def form_valid(self,form):
+        super(ProductDetailView,self).form_valid(form)
+        pk=form.instance.pk
+        newCant=form.instance.cantidad
+        temp=self.request.session['count']
 
-
+        for i in temp:
+            if str(pk) in i:
+                i[str(pk)]=newCant
+        self.request.session['count']=temp
+        print("NEW CANTIDAD: "+str(self.request.session['count']))
+        return HttpResponseRedirect(self.get_success_url())
 def deleteSession(request):
     del request.session['product']
+    del request.session['count']
     return JsonResponse({'done':'done'})
 
 def finalizar(request):
@@ -144,13 +169,17 @@ def finalizar(request):
         p=Articulo.objects.get(pk=i)
         total=total+(p.precio)
         compra.productos.add(p)
-
+    names=[]
     for pk,cant in repeat.items():
         p=Articulo.objects.get(pk=pk)
+        names.append(str(cant)+"x"+str(p.nombre))
         p.cantidad=p.cantidad-cant
         p.save()
     # print(request.session['items'])
     compra.total=total
     compra.save()
+    print(names)
     del request.session['product']
+    email = EmailMessage('BodyMaster {}'.format(compra.fecha), 'Se ha relizado una compra de {1} con un total de ${0} \n '.format(total,"/".join(names)), to=['photoscastillo2017@gmail.com'])
+    email.send()
     return JsonResponse(data)

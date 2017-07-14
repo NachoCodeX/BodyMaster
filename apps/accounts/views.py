@@ -87,9 +87,9 @@ def result(request):
     request.session['search_product']=typeProduct
     nameProduct=request.GET['name']
     if int(typeProduct) > 0:
-        articles=Articulo.objects.filter(tipo=typeProduct)
+        articles=Articulo.objects.filter(tipo=typeProduct).order_by('nombre')
     else:
-        articles=Articulo.objects.all()
+        articles=Articulo.objects.all().order_by('nombre')
     context={
         'object_list':articles,
         'name':nameProduct,

@@ -298,7 +298,7 @@
   font-weight: lighter; }
 
 .item__name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400; }
 
 .item__price, .item__cant {
@@ -320,7 +320,9 @@
 
 .item__info {
   background: #f2f2f2;
-  padding: 1rem; }
+  padding: 1rem;
+  overflow: hidden;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .search_pane {

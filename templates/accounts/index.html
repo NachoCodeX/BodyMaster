@@ -23,9 +23,24 @@
       </select>
 
       <button data-url="{% url  'accounts:addProduct' %}" type="button"  class="btn btn--add" id="addProduct"><i class="icon-plus"></i><span class="btn__text">Agregar</span></button>
+
+
     </div>
-    <section id="result" class="gallery">
-      {% include 'partials/html_result.html' %}
+
+    <section id="result" class="gallery__content">
+        <div class="gallery__title">
+          {% if object_list %}
+              {% if name == '---' %}
+                  <h1 class="item__total">Total de articulos: {{t}}</h1>
+              {% else %}
+                <h1 class="item__total">Total de {{name}}: {{t}}</h1>
+              {% endif %}
+
+          {% endif %}
+        </div>
+        <div class="gallery">
+          {% include 'partials/html_result.html' %}
+        </div>
     </section>
   </main>
   <div id="modal" class="modal"></div>

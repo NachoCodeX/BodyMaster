@@ -27,7 +27,7 @@
 
     </div>
 
-    <section id="result" class="gallery__content">
+    <section class="gallery__content">
         <div class="gallery__title">
           {% if object_list %}
               {% if name == '---' %}
@@ -38,7 +38,7 @@
 
           {% endif %}
         </div>
-        <div class="gallery">
+        <div id="result" class="gallery">
           {% include 'partials/html_result.html' %}
         </div>
     </section>

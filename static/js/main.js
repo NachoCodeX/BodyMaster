@@ -54,10 +54,10 @@ $("body")
         data:{'type':typeProduct,'name':nameProduct},
         success:(data)=>{
           $('#result').html(data.html_result);
-          let totalProducts=$('#result').children().lenght;
+          let totalProducts=$('#result').attr('childElementCount');
           $('#item__total').html('Total de '+nameProduct+' '+totalProducts);
           console.log('Total de '+nameProduct+' '+totalProducts);
-          console.log($('#result'));
+          // console.log($('#result'));
         }
 
       });

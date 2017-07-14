@@ -12,13 +12,13 @@
 
 .gallery {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto; }
 
 .gallery__content {
   width: 100%;
   margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column; }
 

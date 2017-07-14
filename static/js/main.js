@@ -55,8 +55,9 @@ $("body")
         success:(data)=>{
           $('#result').html(data.html_result);
           let totalProducts=$('#result').children().lenght;
-          $('.gallery__title #item__total').text('Total de '+nameProduct+' '+totalProducts);
+          $('#item__total').html('Total de '+nameProduct+' '+totalProducts);
           console.log('Total de '+nameProduct+' '+totalProducts);
+          console.log($('#result'));
         }
 
       });

@@ -297,6 +297,13 @@
 .item__price, .item__cant, .item__desc, .item__name {
   font-weight: lighter; }
 
+.item__total{
+  font-size: 24px;
+  font-weight: lighter;
+  text-align: center;
+  margin: 1rem auto;
+}
+
 .item__name {
   font-size: 22px;
   font-weight: 400; }

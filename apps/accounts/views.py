@@ -93,6 +93,7 @@ def result(request):
     context={
         'object_list':articles,
         'name':nameProduct,
+        't':len(articles),
     }
     data['html_result']=render_to_string('partials/html_result.html',context,request=request)
     return JsonResponse(data)

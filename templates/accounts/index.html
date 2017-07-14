@@ -29,14 +29,7 @@
 
     <section class="gallery__content">
         <div class="gallery__title">
-          {% if object_list %}
-              {% if name == '---' %}
-                  <h1 class="item__total">Total de articulos: {{t}}</h1>
-              {% else %}
-                <h1 class="item__total">Total de {{name}}: {{t}}</h1>
-              {% endif %}
-
-          {% endif %}
+            <h1 class="item__total"></h1>
         </div>
         <div id="result" class="gallery">
           {% include 'partials/html_result.html' %}

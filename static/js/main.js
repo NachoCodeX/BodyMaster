@@ -44,6 +44,8 @@ $("body")
     $('.select').on('change',function(e) {
       let typeProduct=$(this).val(),
           nameProduct=$(this).find(':selected').text();
+
+
       console.log(typeProduct);
       console.log(nameProduct);
       $.ajax({
@@ -52,6 +54,8 @@ $("body")
         data:{'type':typeProduct,'name':nameProduct},
         success:(data)=>{
           $('#result').html(data.html_result);
+          let totalProducts=$('#result').children().lenght;
+          $('.item__total').innerHTML='Total de '+nameProduct+' '+totalProducts;
         }
 
       });

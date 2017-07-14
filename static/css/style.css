@@ -264,14 +264,14 @@
   display: flex; }
 
 .gallery {
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-wrap: wrap; }
 
 .gallery__content {
   width: 100%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column; }
 

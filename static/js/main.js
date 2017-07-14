@@ -55,8 +55,11 @@ $("body")
         success:(data)=>{
           $('#result').html(data.html_result);
           let totalProducts=$('#result .item').length;
-          $('#item__total').html('Total de '+nameProduct+' '+totalProducts);
-          console.log('Total de '+nameProduct+' '+totalProducts);
+          if(nameProduct === '---'){
+            $('#item__total').html('Total de articulos: '+totalProducts);
+          }else{
+            $('#item__total').html('Total de '+nameProduct+': '+totalProducts);
+          }
           // console.log($('#result'));
         }
 
